@@ -28,9 +28,10 @@ async function createServer() {
 
       const { render } = await vite.ssrLoadModule('/src/entry-server.js')
 
-      const appHtml = await render(url)
+      const [appHtml] = await render(url)
 
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml)
+      const html = template.replace(`<!--app-html-->`, appHtml)
+
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
