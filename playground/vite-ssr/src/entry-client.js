@@ -1,5 +1,10 @@
 import { createApp } from "./main.js";
 
-const { app } = createApp()
+const { app, router } = createApp()
 
-app.mount('#app')
+router.isReady().then(() => {
+  app.mount('#app')
+  console.log('hydrated')
+})
+
+

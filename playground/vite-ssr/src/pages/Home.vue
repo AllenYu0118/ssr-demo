@@ -2,15 +2,12 @@
   <div>
     Home SSR
 
-    <button @click="click">{{ count }}</button>
+    <button @click="counterStore.increment">{{ counterStore.count }}</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const count = ref(0)
+import { useCounterStore } from '../stores'
 
-const click = () => {
-  count.value++
-}
+const counterStore = useCounterStore()
 </script>
