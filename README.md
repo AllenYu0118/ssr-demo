@@ -16,5 +16,7 @@ playground
     - App.vue vue 应用组件入口
     - entry-client.js 客户端入口
     - entry-server.js 服务端入口
+    - router.js 路由
+    - stores.js pinia store
   - server.js 创建 Vite 服务
 
