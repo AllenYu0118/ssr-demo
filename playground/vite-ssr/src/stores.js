@@ -18,7 +18,7 @@ export const useCounterStore = defineStore('counter', () => {
   }
 
   onServerPrefetch(async () => {
-    getFruitList()
+    await getFruitList()
   })
 
   return {
