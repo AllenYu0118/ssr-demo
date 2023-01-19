@@ -18,6 +18,24 @@ async function createServer() {
 
   app.use(vite.middlewares)
 
+  app.use('/getFruitList', async (req, res) => {
+    const names = ['Orange', 'Apricot', 'Apple', 'Plum', 'Pear', 'Pome', 'Banana', 'Cherry', 'Grapes', 'Peach']
+
+    const list = names.map((name, id) => {
+      return {
+        id: ++id,
+        name,
+        price: Math.ceil(Math.random() * 100)
+      }
+    })
+
+    res.status(200).end(JSON.stringify({
+      data: list,
+      msg: '',
+      status: 1,
+    }))
+  })
+
   app.use('*', async (req, res, next) => {
     const url = req.originalUrl
 
@@ -43,6 +61,8 @@ async function createServer() {
   app.listen(PORT)
 }
 
-createServer()
+createServer().then(() => {
+  console.log(`http://localhost:${PORT}`)
+})
 
 
