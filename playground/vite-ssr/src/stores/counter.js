@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, onServerPrefetch } from 'vue'
+import { ref } from 'vue'
 
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(5)
@@ -14,16 +14,19 @@ export const useCounterStore = defineStore('counter', () => {
     if (response.status) {
       fruitList.value = response.data
     }
-    console.log('response: ', response);
   }
 
-  onServerPrefetch(async () => {
-    await getFruitList()
-  })
+  // onServerPrefetch(async () => {
+  //   await getFruitList()
+  // })
+
+
+  getFruitList()
+
 
   return {
     count,
     fruitList,
-    increment
+    increment,
   }
 })

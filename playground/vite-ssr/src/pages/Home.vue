@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { useCounterStore } from '../stores'
+import { useCounterStore } from '../stores/counter'
 
 const counterStore = useCounterStore()
 </script>
