@@ -10,6 +10,7 @@ export const useCounterStore = defineStore('counter', () => {
 
   const getFruitList = async () => {
     const response = await (await fetch('http://localhost:5173/getFruitList')).json()
+    // console.log('response: ', response);
 
     if (response.status) {
       fruitList.value = response.data
