@@ -3,23 +3,20 @@
     <ul>
       <li v-for="item in counterStore.fruitList">{{ item.name }} - {{ item.price }}</li>
     </ul>
-  </div>
+</div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  async asyncData() {
-    await useCounterStore()
-    console.log('asyncData')
-  }
-})
-</script>
-
 <script setup>
+import { inject, onServerPrefetch } from 'vue'
 import { useCounterStore } from '../stores/counter'
 const counterStore = useCounterStore()
+const store = inject('store')
+
+onServerPrefetch(async () => {
+  const result = await counterStore.getFruitList()
+  store.state.value.test = result
+  console.log('store: ', store.state.value);
+})
 </script>
 
 

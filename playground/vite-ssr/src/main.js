@@ -12,5 +12,7 @@ export function createApp() {
   app.use(pinia)
   app.use(router)
 
+  app.provide('store', pinia)
+
   return { app, router, pinia }
 }
